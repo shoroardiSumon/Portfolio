@@ -96,6 +96,8 @@ class AboutSection extends StatelessWidget {
         _buildCard(context, 'Projects', stats['projects'] as String, Icons.folder),
         const SizedBox(height: 14),
         _buildCard(context, 'Primary', stats['primary'] as String, Icons.code),
+        const SizedBox(height: 14),
+        _buildCard(context, 'Secondary', stats['secondary'] as String, Icons.code),
       ],
     );
   }

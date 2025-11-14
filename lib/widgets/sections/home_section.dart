@@ -2,6 +2,7 @@
 // import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/constants/assets.dart';
 import 'package:portfolio/constants/content.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
@@ -99,6 +100,22 @@ class HomeSection extends StatelessWidget {
               onPressed: () => scrollController?.scrollToIndex(3, preferPosition: AutoScrollPosition.begin),
               child: const Text(viewProjectsLabel),
             ),
+            const SizedBox(width: 12),
+            IconButton(
+              onPressed: () => launchUrl(Uri.parse(socialLinks['linkedin'] ?? '')),
+              icon: FaIcon(FontAwesomeIcons.linkedin, color: Theme.of(context).colorScheme.primary),
+              tooltip: linkedinTooltip,
+            ),
+            IconButton(
+              onPressed: () => launchUrl(Uri.parse(socialLinks['github'] ?? '')),
+              icon: FaIcon(FontAwesomeIcons.github, color: Theme.of(context).colorScheme.primary),
+              tooltip: githubTooltip,
+            ),
+            IconButton(
+              onPressed: () => launchUrl(Uri.parse(socialLinks['email'] ?? 'mailto:')),
+              icon: const Icon(Icons.email, color: Color(0xFFFF9800)),
+              tooltip: sendEmailTooltip,
+            ),
           ],
         ),
             const SizedBox(height: 12),
@@ -147,6 +164,22 @@ class HomeSection extends StatelessWidget {
                   OutlinedButton(
                     onPressed: () => scrollController?.scrollToIndex(3, preferPosition: AutoScrollPosition.begin),
                     child: const Text(viewProjectsLabel),
+                  ),
+                  const SizedBox(width: 12),
+                  IconButton(
+                    onPressed: () => launchUrl(Uri.parse(socialLinks['linkedin'] ?? '')),
+                    icon: FaIcon(FontAwesomeIcons.linkedin, color: Theme.of(context).colorScheme.primary),
+                    tooltip: linkedinTooltip,
+                  ),
+                  IconButton(
+                    onPressed: () => launchUrl(Uri.parse(socialLinks['github'] ?? '')),
+                    icon: FaIcon(FontAwesomeIcons.github, color: Theme.of(context).colorScheme.primary),
+                    tooltip: githubTooltip,
+                  ),
+                  IconButton(
+                    onPressed: () => launchUrl(Uri.parse(socialLinks['email'] ?? 'mailto:')),
+                    icon: const Icon(Icons.email, color: Color(0xFFFF9800)),
+                    tooltip: sendEmailTooltip,
                   ),
                 ],
               ),

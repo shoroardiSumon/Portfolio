@@ -6,8 +6,7 @@ const String personName = 'Md. Shoroardi Sumon';
 const String homeJobTitle = 'Flutter Developer | Spring Boot Backend Developer';
 
 const List<String> homeParagraphs = [
-  'Flutter developer with 3 years of experience building high-performance mobile and web applications. I also work with Spring Boot to develop scalable REST APIs.',
-  'I use modern AI coding agents like GitHub Copilot and Claude Code to improve development speed, code quality, and productivity.',
+  'Flutter developer with 3 years of experience building high-performance mobile and web applications. I also work with Spring Boot to develop scalable REST APIs.'
 ];
 
 const String downloadCvPath = '/assets/CV-Md Shoroardi Sumon.pdf';
@@ -62,8 +61,9 @@ const List<String> skillsList = ['Flutter', 'Dart', 'Spring Boot', 'REST', 'Fire
 
 const Map<String, dynamic> stats = {
   'experience': '3+',
-  'projects': '6+',
+  'projects': '7+',
   'primary': 'Flutter',
+  'secondary': 'Spring Boot',
 };
 
 // Experience entries
