@@ -3,7 +3,7 @@
 
 const String personName = 'Md. Shoroardi Sumon';
 
-const String homeJobTitle = 'Flutter Developer | Spring Boot Backend Developer';
+const String homeJobTitle = 'Flutter Developer | Spring Boot Developer';
 
 const List<String> homeParagraphs = [
   'Flutter developer with 3 years of experience building high-performance mobile and web applications. I also work with Spring Boot to develop scalable REST APIs.'
