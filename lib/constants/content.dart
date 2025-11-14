@@ -9,7 +9,7 @@ const List<String> homeParagraphs = [
   'Flutter developer with 3 years of experience building high-performance mobile and web applications. I also work with Spring Boot to develop scalable REST APIs.'
 ];
 
-const String downloadCvPath = '/assets/CV-Md Shoroardi Sumon.pdf';
+const String downloadCvPath = '/assets/CV-MdShoroardiSumon.pdf';
 const String downloadCvLabel = 'Download CV';
 const String viewProjectsLabel = 'View Projects';
 
