@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:http/http.dart' as http;
+import 'package:portfolio/constants/content.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -116,7 +117,7 @@ class _ContactSectionState extends State<ContactSection> {
                 Semantics(
                   label: 'Contact Section Title',
                   child: Text(
-                    'Contact',
+                    contactTitle,
                     style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -125,13 +126,13 @@ class _ContactSectionState extends State<ContactSection> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      _buildTextField(_nameController, 'Name', Icons.person, (value) => (value == null || value.isEmpty) ? 'Please enter your name' : null),
+                      _buildTextField(_nameController, nameLabel, Icons.person, (value) => (value == null || value.isEmpty) ? 'Please enter your name' : null),
                       const SizedBox(height: 10),
-                      _buildTextField(_emailController, 'Email', Icons.email, (value) => (value == null || value.isEmpty || !value.contains('@')) ? 'Please enter a valid email' : null),
+                      _buildTextField(_emailController, emailLabel, Icons.email, (value) => (value == null || value.isEmpty || !value.contains('@')) ? 'Please enter a valid email' : null),
                       const SizedBox(height: 10),
                       _buildTextField(
                         _messageController,
-                        'Message',
+                        messageLabel,
                         Icons.message,
                         (value) => (value == null || value.isEmpty) ? 'Please enter a message' : null,
                         maxLines: isMobile ? 4 : 5,
@@ -143,7 +144,7 @@ class _ContactSectionState extends State<ContactSection> {
                         child: ElevatedButton.icon(
                           onPressed: _submitForm,
                           icon: const Icon(Icons.send),
-                          label: const Text('Send Message'),
+                          label: const Text(sendMessageLabel),
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(vertical: isMobile ? 12 : 16),
                           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/constants/content.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -26,13 +27,13 @@ class AboutSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Semantics(
-                  label: 'About Section Title',
-                  child: Text(
-                    'About Me',
-                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                ),
+                    Semantics(
+                      label: aboutTitle,
+                      child: Text(
+                        aboutTitle,
+                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ),
                 const SizedBox(height: 20),
                 isMobile ? _buildMobileContent(context) : _buildDesktopContent(context),
               ],
@@ -90,11 +91,11 @@ class AboutSection extends StatelessWidget {
   Widget _buildInfoCards(BuildContext context) {
     return Column(
       children: [
-        _buildCard(context, 'Experience', '3+ years', Icons.work),
+        _buildCard(context, 'Experience', stats['experience'] as String, Icons.work),
         const SizedBox(height: 14),
-        _buildCard(context, 'Projects', '7+ delivered', Icons.folder),
+        _buildCard(context, 'Projects', stats['projects'] as String, Icons.folder),
         const SizedBox(height: 14),
-        _buildCard(context, 'Location', 'Dhaka, Bangladesh', Icons.location_on),
+        _buildCard(context, 'Primary', stats['primary'] as String, Icons.code),
       ],
     );
   }
@@ -152,9 +153,9 @@ class AboutSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildStat(context, '3+', 'Years Experience'),
-        _buildStat(context, '6+', 'Projects'),
-        _buildStat(context, 'Flutter', 'Primary'),
+            _buildStat(context, stats['experience'] as String, yearsExperienceLabel),
+            _buildStat(context, stats['projects'] as String, projectsLabel),
+            _buildStat(context, stats['primary'] as String, primaryLabel),
       ],
     );
   }
@@ -171,7 +172,7 @@ class AboutSection extends StatelessWidget {
   }
 
   Widget _buildSkillsWrap(BuildContext context) {
-    final skills = ['Flutter', 'Dart', 'Spring Boot', 'REST', 'Firebase', 'Git'];
+    final skills = skillsList;
     return Wrap(
       spacing: 8,
       runSpacing: 8,
@@ -194,13 +195,14 @@ class AboutSection extends StatelessWidget {
       label: 'Professional Summary',
       child: Container(
         constraints: const BoxConstraints(maxWidth: 900),
-        child: Text(
-          'I am a Flutter Developer with 3 years of experience building fast, reliable, and visually polished applications for Android, iOS, and the web. I specialize in Flutter, Dart, Provider, Riverpod, and BLoC, and have delivered multiple production apps integrating real-time data, secure payments, authentication, and advanced UI/UX animations.\n\n'
-          'I also work with Spring Boot to design high-performance REST APIs that follow clean architecture, scalable design patterns, and strong security practices. My focus is building seamless end-to-end experiences where frontend and backend work together smoothly.\n\n'
-          'To stay efficient and modern, I actively use AI-assisted development tools such as GitHub Copilot and Claude Code, which help me speed up development, maintain clean code, and solve complex engineering problems more effectively.\n\n'
-          'I enjoy working in Agile/Scrum environments, collaborating with teams, and building solutions that solve real business problems with clean, maintainable code.',
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6, fontSize: 16),
-          textAlign: TextAlign.justify,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: aboutParagraphs
+              .map((p) => Padding(
+                    padding: const EdgeInsets.only(bottom: 12.0),
+                    child: Text(p, style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6, fontSize: 16), textAlign: TextAlign.justify),
+                  ))
+              .toList(),
         ),
       ),
     );
@@ -213,7 +215,7 @@ class AboutSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Contact Information', textAlign: TextAlign.left, style: textStyle),
+            Text(contactInfoTitle, textAlign: TextAlign.left, style: textStyle),
         const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -227,7 +229,7 @@ class AboutSection extends StatelessWidget {
                   Icon(Icons.location_on, size: 18, color: iconColor),
                   const SizedBox(width: 8),
                   Expanded(
-                    child: Text('House 11, Road 12, North Badda, Dhaka 1212, Bangladesh', style: textStyle),
+                        child: Text(contactInfo['address'] ?? '', style: textStyle),
                   ),
                 ],
               ),
@@ -236,7 +238,7 @@ class AboutSection extends StatelessWidget {
                 children: [
                   Icon(Icons.phone, size: 18, color: iconColor),
                   const SizedBox(width: 8),
-                  SelectableText('+8801776954809', style: textStyle),
+                      SelectableText(contactInfo['phone'] ?? '', style: textStyle),
                 ],
               ),
               const SizedBox(height: 8),
@@ -244,10 +246,10 @@ class AboutSection extends StatelessWidget {
                 children: [
                   Icon(Icons.email, size: 18, color: iconColor),
                   const SizedBox(width: 8),
-                  GestureDetector(
-                    onTap: () => launchUrl(Uri.parse('mailto:shoroardi.sumon@gmail.com')),
-                    child: SelectableText('shoroardi.sumon@gmail.com', style: textStyle),
-                  ),
+                      GestureDetector(
+                        onTap: () => launchUrl(Uri.parse(socialLinks['email'] ?? 'mailto:')),
+                        child: SelectableText(contactInfo['email'] ?? '', style: textStyle),
+                      ),
                 ],
               ),
             ],
@@ -263,21 +265,21 @@ class AboutSection extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          IconButton(
-            onPressed: () => launchUrl(Uri.parse('https://www.linkedin.com/in/md-shoroardi-sumon-a00a1a184/')),
-            icon: FaIcon(FontAwesomeIcons.linkedin, color: Theme.of(context).colorScheme.primary),
-            tooltip: 'LinkedIn',
-          ),
-          IconButton(
-            onPressed: () => launchUrl(Uri.parse('https://github.com/shoroardiSumon')),
-            icon: FaIcon(FontAwesomeIcons.github, color: Theme.of(context).colorScheme.primary),
-            tooltip: 'GitHub',
-          ),
-          IconButton(
-            onPressed: () => launchUrl(Uri.parse('mailto:shoroardi.sumon@gmail.com')),
-            icon: const Icon(Icons.email, color: Color(0xFFFF9800)),
-            tooltip: 'Email',
-          ),
+              IconButton(
+                onPressed: () => launchUrl(Uri.parse(socialLinks['linkedin'] ?? '')),
+                icon: FaIcon(FontAwesomeIcons.linkedin, color: Theme.of(context).colorScheme.primary),
+                tooltip: linkedinTooltip,
+              ),
+              IconButton(
+                onPressed: () => launchUrl(Uri.parse(socialLinks['github'] ?? '')),
+                icon: FaIcon(FontAwesomeIcons.github, color: Theme.of(context).colorScheme.primary),
+                tooltip: githubTooltip,
+              ),
+              IconButton(
+                onPressed: () => launchUrl(Uri.parse(socialLinks['email'] ?? 'mailto:')),
+                icon: const Icon(Icons.email, color: Color(0xFFFF9800)),
+                tooltip: sendEmailTooltip,
+              ),
         ],
       ),
     );

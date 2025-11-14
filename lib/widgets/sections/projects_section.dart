@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/constants/assets.dart';
+import 'package:portfolio/constants/content.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,57 +13,7 @@ class ProjectsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final projects = <Map<String, dynamic>>[
-      {
-        'name': 'My Bitcoin Canvas App',
-        'description': 'A canvas-based Bitcoin tracking app with real-time updates.',
-        'technologies': 'Flutter, Dart, REST API',
-        'link': 'https://apps.apple.com/us/app/my-bitcoin-canvas/id6740707716',
-        'image': 'assets/images/my-bitcoin-canvas.png',
-      },
-      {
-        'name': 'Be Thankful E-commerce App',
-        'description': 'Full-featured e-commerce app with payment integration.',
-        'technologies': 'Flutter, Stripe, Firebase',
-        'link': 'https://play.google.com/store/apps/details?id=com.tariqdesignloops.bethankful',
-        'image': 'assets/images/be-thankful.png',
-      },
-      {
-        'name': 'Be Thankful Driver App',
-        'description': 'Full-featured driver app for order delivery management.',
-        'technologies': 'Flutter, Firebase',
-        'link': 'https://play.google.com/store/apps/details?id=com.tariqdesignloops.bethankfuldriver',
-        'image': 'assets/images/be-thankful-driver.png',
-      },
-      {
-        'name': 'BPDB Prepaid App',
-        'description': 'Internal app for electricity prepaid metering.',
-        'technologies': 'Flutter, Spring Boot',
-        'link': null,
-        'image': 'assets/images/bpdb-prepaid.png',
-      },
-      {
-        'name': 'BPDB FDM App',
-        'description': 'Fault detection and management internal app.',
-        'technologies': 'Flutter, REST API',
-        'link': null,
-        'image': 'assets/images/bpdb-prepaid.png',
-      },
-      {
-        'name': 'AmarBoard App',
-        'description': 'E-learning app built with Flutter & Dart.',
-        'technologies': 'Flutter, Dart, Firebase',
-        'link': 'https://play.google.com/store/apps/details?id=com.bd.amarboard',
-        'image': 'assets/images/amarboard.jpg',
-      },
-      {
-        'name': 'HR Management App',
-        'description': 'Internal HR system for employee management.',
-        'technologies': 'Flutter, Spring Boot',
-        'link': null,
-        'image': 'assets/images/nexahr.png',
-      },
-    ];
+    // Use centralized projects from constants (`projects` in content.dart)
 
     final crossAxisCount = MediaQuery.sizeOf(context).width > 1200
         ? 3
@@ -81,9 +33,9 @@ class ProjectsSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Semantics(
-              label: 'Projects Section Title',
+              label: projectsTitle,
               child: Text(
-                'Projects',
+                projectsTitle,
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
             ),
@@ -131,7 +83,7 @@ class ProjectsSection extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       image: DecorationImage(
-                        image: AssetImage(resolvedImage ?? project['image'] ?? 'assets/images/placeholder.jpg'),
+                          image: AssetImage(resolvedImage ?? (project['image'] as String?) ?? assetPlaceholderImage),
                         fit: BoxFit.fill,
                       ),
                       color: Theme.of(context).colorScheme.surface,
@@ -155,7 +107,7 @@ class ProjectsSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  'Technologies: ${project['technologies']}',
+                  '$technologiesLabel ${project['technologies']}',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).primaryColor),
                 ),
                 if (project['link'] != null) ...[
@@ -163,7 +115,7 @@ class ProjectsSection extends StatelessWidget {
                   TextButton.icon(
                     onPressed: () => launchUrl(Uri.parse(project['link'])),
                     icon: const Icon(Icons.open_in_new, size: 16),
-                    label: const Text('View on Store'),
+                    label: const Text(viewOnStoreLabel),
                   ),
                 ],
               ],
@@ -208,7 +160,7 @@ class ProjectsSection extends StatelessWidget {
         }
       }
 
-      chosen ??= 'assets/images/placeholder.jpg';
+  chosen ??= assetPlaceholderImage;
       results.add(chosen);
     }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/constants/content.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import '../scroll_controller_inherited.dart';
@@ -9,20 +10,7 @@ class ExperienceSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final experiences = <Map<String, dynamic>>[
-      {
-        'company': 'Automation Services Ltd, Gulshan-1, Dhaka',
-        'role': 'Software Engineer',
-        'duration': 'Nov 2022 – Present',
-        'description': const [
-          'Built and maintained Flutter mobile apps with REST API integration.',
-          'Developed and maintained Spring Boot REST APIs for backend services.',
-          'Improved the BPDB Electricity Prepaid Metering System (Struts + JSP + Oracle).',
-          'Collaborated with backend teams to ensure robust API integrations.',
-          'Managed app deployment on Play Store and internal testing via TestFlight.',
-        ],
-      },
-    ];
+  // Use centralized experiences from constants (top-level `experiences`)
 
     final scrollController = ScrollControllerInherited.of(context)!;
 
@@ -37,9 +25,9 @@ class ExperienceSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Semantics(
-              label: 'Experience Section Title',
+              label: experienceTitle,
               child: Text(
-                'Experience',
+                experienceTitle,
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
             ),
