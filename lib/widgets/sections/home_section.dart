@@ -2,6 +2,9 @@
 // import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/constants/assets.dart';
+import 'package:portfolio/constants/content.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -47,7 +50,7 @@ class HomeSection extends StatelessWidget {
             height: 150,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              image: const DecorationImage(image: AssetImage('assets/images/profile.jpg'), fit: BoxFit.cover),
+              image: DecorationImage(image: AssetImage(assetProfileImage), fit: BoxFit.cover),
               boxShadow: [
                 BoxShadow(
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.12),
@@ -61,7 +64,7 @@ class HomeSection extends StatelessWidget {
         Animate(
           effects: const [FadeEffect(duration: Duration(seconds: 1))],
           child: Text(
-            'Md. Shoroardi Sumon',
+            personName,
             style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
@@ -69,7 +72,7 @@ class HomeSection extends StatelessWidget {
         const SizedBox(height: 8),
           // Job title
           Text(
-            'Flutter Developer | Spring Boot Backend Developer',
+            homeJobTitle,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
               color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.w600,
@@ -79,7 +82,7 @@ class HomeSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            'Flutter & Spring Boot Developer with 3 years of experience building high-performance Android, iOS, and web applications.',
+              homeParagraphs.first,
             style: Theme.of(context).textTheme.bodyLarge,
             textAlign: TextAlign.center,
           ),
@@ -90,16 +93,37 @@ class HomeSection extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () => _downloadCV(context),
-              child: const Text('Download CV'),
+              child: const Text(downloadCvLabel),
             ),
             const SizedBox(width: 10),
             OutlinedButton(
               onPressed: () => scrollController?.scrollToIndex(3, preferPosition: AutoScrollPosition.begin),
-              child: const Text('View Projects'),
+              child: const Text(viewProjectsLabel),
             ),
           ],
         ),
-            const SizedBox(height: 12),
+        const SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: () => launchUrl(Uri.parse(socialLinks['linkedin'] ?? '')),
+              icon: FaIcon(FontAwesomeIcons.linkedin, color: Theme.of(context).colorScheme.primary),
+              tooltip: linkedinTooltip,
+            ),
+            IconButton(
+              onPressed: () => launchUrl(Uri.parse(socialLinks['github'] ?? '')),
+              icon: FaIcon(FontAwesomeIcons.github, color: Theme.of(context).colorScheme.primary),
+              tooltip: githubTooltip,
+            ),
+            IconButton(
+              onPressed: () => launchUrl(Uri.parse(socialLinks['email'] ?? 'mailto:')),
+              icon: const Icon(Icons.email, color: Color(0xFFFF9800)),
+              tooltip: sendEmailTooltip,
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
       ],
     );
   }
@@ -116,14 +140,14 @@ class HomeSection extends StatelessWidget {
               Animate(
                 effects: const [FadeEffect(duration: Duration(seconds: 1))],
                 child: Text(
-                  'Md. Shoroardi Sumon',
+                  personName,
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 10),
                 // Job title
                 Text(
-                  'Flutter Developer | Spring Boot Developer',
+                  homeJobTitle,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w600,
@@ -131,7 +155,7 @@ class HomeSection extends StatelessWidget {
                 ),
               const SizedBox(height: 20),
               Text(
-                'Flutter developer with 3 years of experience building high-performance mobile and web applications. I also work with Spring Boot to develop scalable REST APIs.',
+                homeParagraphs.join(' '),
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(height: 30),
@@ -139,12 +163,28 @@ class HomeSection extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () => _downloadCV(context),
-                    child: const Text('Download CV'),
+                    child: const Text(downloadCvLabel),
                   ),
                   const SizedBox(width: 10),
                   OutlinedButton(
                     onPressed: () => scrollController?.scrollToIndex(3, preferPosition: AutoScrollPosition.begin),
-                    child: const Text('View Projects'),
+                    child: const Text(viewProjectsLabel),
+                  ),
+                  const SizedBox(width: 12),
+                  IconButton(
+                    onPressed: () => launchUrl(Uri.parse(socialLinks['linkedin'] ?? '')),
+                    icon: FaIcon(FontAwesomeIcons.linkedin, color: Theme.of(context).colorScheme.primary),
+                    tooltip: linkedinTooltip,
+                  ),
+                  IconButton(
+                    onPressed: () => launchUrl(Uri.parse(socialLinks['github'] ?? '')),
+                    icon: FaIcon(FontAwesomeIcons.github, color: Theme.of(context).colorScheme.primary),
+                    tooltip: githubTooltip,
+                  ),
+                  IconButton(
+                    onPressed: () => launchUrl(Uri.parse(socialLinks['email'] ?? 'mailto:')),
+                    icon: const Icon(Icons.email, color: Color(0xFFFF9800)),
+                    tooltip: sendEmailTooltip,
                   ),
                 ],
               ),
@@ -162,7 +202,7 @@ class HomeSection extends StatelessWidget {
                 height: 220,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  image: const DecorationImage(image: AssetImage('assets/images/profile.jpg'), fit: BoxFit.cover),
+                  image: DecorationImage(image: AssetImage(assetProfileImage), fit: BoxFit.cover),
                   boxShadow: [
                     BoxShadow(
                       color: Theme.of(context).colorScheme.primary.withOpacity(0.12),
@@ -179,7 +219,7 @@ class HomeSection extends StatelessWidget {
   }
 
   void _downloadCV(BuildContext context) {
-    launchUrl(Uri(path: '/assets/CV-Md Shoroardi Sumon.pdf'));
+    launchUrl(Uri(path: downloadCvPath));
   }
 
 }

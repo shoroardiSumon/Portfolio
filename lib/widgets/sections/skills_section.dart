@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/constants/content.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import '../scroll_controller_inherited.dart';
@@ -9,52 +10,8 @@ class SkillsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final skillsGroups = <String, List<String>>{
-      'Flutter & Mobile App': const [
-        'Flutter',
-        'Provider',
-        'BLoC',
-        'Riverpod',
-        'CustomPainter',
-        'Google Maps',
-        'FCM',
-        'Stripe',
-        'RevenueCat',
-        'Play Store',
-        'TestFlight',
-      ],
-      'Backend & APIs': const [
-        'Spring Boot (REST API)',
-        'REST/GraphQL/XML API Integration',
-        'Firebase Authentication',
-      ],
-      'Architecture & Development': const [
-        'Clean Architecture',
-        'Modular Code',
-        'Debugging',
-        'Agile/Scrum',
-      ],
-      'AI-Assisted Development': const [
-        'GitHub Copilot',
-        'ChatGPT',
-        'Claude',
-        'Grok',
-        'DeepSeek',
-      ],
-      'Languages & Databases': const [
-        'Dart',
-        'Java',
-        'C',
-        'JavaScript',
-        'HTML',
-        'CSS',
-        'Oracle',
-        'MySQL',
-        'PostgreSQL',
-        'SQLite',
-        'Firebase',
-      ],
-    };
+  // Use centralized skills groups from constants (`skillsGroups` in content.dart)
+  // top-level `skillsGroups` will be referenced directly below
 
     final scrollController = ScrollControllerInherited.of(context)!;
 
@@ -69,9 +26,9 @@ class SkillsSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Semantics(
-              label: 'Skills Section Title',
+              label: skillsTitle,
               child: Text(
-                'Skills',
+                skillsTitle,
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
             ),

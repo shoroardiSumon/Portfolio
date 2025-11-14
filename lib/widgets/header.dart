@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/content.dart';
 
 class Header extends StatelessWidget {
   final Function(String) onScrollTo;
@@ -24,7 +25,7 @@ class Header extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.menu, color: Theme.of(context).colorScheme.onSurface),
                 onPressed: () => _openMobileMenu(context),
-                tooltip: 'Open navigation',
+                tooltip: openNavigationTooltip,
               ),
               const Spacer(),
               GestureDetector(
@@ -65,9 +66,9 @@ class Header extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 // left nav group (3 before the logo)
-                _buildNavButton('About', 'about', onScrollTo),
-                _buildNavButton('Skills', 'skills', onScrollTo),
-                _buildNavButton('Projects', 'projects', onScrollTo),
+                _buildNavButton(navLabels['about'] ?? 'About', 'about', onScrollTo),
+                _buildNavButton(navLabels['skills'] ?? 'Skills', 'skills', onScrollTo),
+                _buildNavButton(navLabels['projects'] ?? 'Projects', 'projects', onScrollTo),
                 const SizedBox(width: 8),
                 // logo in middle
                 GestureDetector(
@@ -90,9 +91,9 @@ class Header extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 // right nav group
-                _buildNavButton('Experience', 'experience', onScrollTo),
-                _buildNavButton('Education', 'education', onScrollTo),
-                _buildNavButton('Contact', 'contact', onScrollTo),
+                _buildNavButton(navLabels['experience'] ?? 'Experience', 'experience', onScrollTo),
+                _buildNavButton(navLabels['education'] ?? 'Education', 'education', onScrollTo),
+                _buildNavButton(navLabels['contact'] ?? 'Contact', 'contact', onScrollTo),
               ],
             ),
           ),
@@ -126,42 +127,42 @@ class Header extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                title: const Text('About'),
+                title: Text(navLabels['about'] ?? 'About'),
                 onTap: () {
                   Navigator.of(ctx).pop();
                   onScrollTo('about');
                 },
               ),
               ListTile(
-                title: const Text('Skills'),
+                title: Text(navLabels['skills'] ?? 'Skills'),
                 onTap: () {
                   Navigator.of(ctx).pop();
                   onScrollTo('skills');
                 },
               ),
               ListTile(
-                title: const Text('Projects'),
+                title: Text(navLabels['projects'] ?? 'Projects'),
                 onTap: () {
                   Navigator.of(ctx).pop();
                   onScrollTo('projects');
                 },
               ),
               ListTile(
-                title: const Text('Experience'),
+                title: Text(navLabels['experience'] ?? 'Experience'),
                 onTap: () {
                   Navigator.of(ctx).pop();
                   onScrollTo('experience');
                 },
               ),
               ListTile(
-                title: const Text('Education'),
+                title: Text(navLabels['education'] ?? 'Education'),
                 onTap: () {
                   Navigator.of(ctx).pop();
                   onScrollTo('education');
                 },
               ),
               ListTile(
-                title: const Text('Contact'),
+                title: Text(navLabels['contact'] ?? 'Contact'),
                 onTap: () {
                   Navigator.of(ctx).pop();
                   onScrollTo('contact');

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/constants/content.dart';
+
+// Footer uses centralized content constants for texts and social links
 
 class Footer extends StatelessWidget {
   final Function(String) onLaunchURL;
@@ -22,7 +25,7 @@ class Footer extends StatelessWidget {
           Semantics(
             label: 'Copyright Notice',
             child: Text(
-              '© 2025 Md. Shoroardi Sumon — All Rights Reserved.',
+              footerCopyright,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
@@ -33,19 +36,19 @@ class Footer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  onPressed: () => onLaunchURL('https://github.com/shoroardiSumon'),
+                  onPressed: () => onLaunchURL(socialLinks['github'] ?? ''),
                   icon: FaIcon(FontAwesomeIcons.github, size: 20),
-                  tooltip: 'GitHub Profile',
+                  tooltip: githubTooltip,
                 ),
                 IconButton(
-                  onPressed: () => onLaunchURL('https://www.linkedin.com/in/md-shoroardi-sumon-a00a1a184/'),
+                  onPressed: () => onLaunchURL(socialLinks['linkedin'] ?? ''),
                   icon: FaIcon(FontAwesomeIcons.linkedin, size: 20),
-                  tooltip: 'LinkedIn Profile',
+                  tooltip: linkedinTooltip,
                 ),
                 IconButton(
-                  onPressed: () => onLaunchURL('mailto:shoroardi.sumon@gmail.com'),
+                  onPressed: () => onLaunchURL(socialLinks['email'] ?? ''),
                   icon: const Icon(Icons.email),
-                  tooltip: 'Send Email',
+                  tooltip: sendEmailTooltip,
                 ),
               ],
             ),

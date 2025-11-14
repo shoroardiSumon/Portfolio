@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/constants/content.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import '../scroll_controller_inherited.dart';
@@ -9,29 +10,7 @@ class EducationSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final educations = const [
-      {
-        'institution': 'Pabna University of Science & Technology, Pabna',
-        'degree': 'B.Sc. Engineering',
-        'department': 'Department of Electronic & Telecommunication Engineering',
-        'period': 'January, 2015 - May, 2021',
-        'gpa': 'CGPA: 3.18',
-      },
-      {
-        'institution': 'Ullapara Science College, Ullapara, Sirajganj',
-        'degree': 'HSC',
-        'department': null,
-        'period': 'Session: 2011-2012',
-        'gpa': 'GPA: 4.90',
-      },
-      {
-        'institution': 'Momena Ali Biggan School, Ullapara, Sirajganj',
-        'degree': 'SSC',
-        'department': null,
-        'period': 'Session: 2009-2010',
-        'gpa': 'GPA: 5.00',
-      },
-    ];
+  final items = educations;
 
     final scrollController = ScrollControllerInherited.of(context)!;
 
@@ -46,14 +25,14 @@ class EducationSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Semantics(
-              label: 'Education Section Title',
+              label: educationTitle,
               child: Text(
-                'Education',
+                educationTitle,
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 20),
-            ...educations.map((edu) => _buildEducationCard(context, edu)),
+            ...items.map((edu) => _buildEducationCard(context, edu)),
           ],
         ),
       ),
