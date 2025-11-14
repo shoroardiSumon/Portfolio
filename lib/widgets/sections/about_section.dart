@@ -53,10 +53,6 @@ class AboutSection extends StatelessWidget {
           child: _buildSummaryText(context),
         ),
         const SizedBox(height: 20),
-        _buildStatRow(context),
-        const SizedBox(height: 18),
-        _buildSkillsWrap(context),
-        const SizedBox(height: 20),
         _buildContactInfo(context),
         const SizedBox(height: 12),
         _buildSocialIcons(context),
@@ -148,47 +144,6 @@ class AboutSection extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildStatRow(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-            _buildStat(context, stats['experience'] as String, yearsExperienceLabel),
-            _buildStat(context, stats['projects'] as String, projectsLabel),
-            _buildStat(context, stats['primary'] as String, primaryLabel),
-      ],
-    );
-  }
-
-  Widget _buildStat(BuildContext context, String big, String small) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(big, style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold, fontSize: 28)),
-        const SizedBox(height: 6),
-        Text(small, style: Theme.of(context).textTheme.bodySmall),
-      ],
-    );
-  }
-
-  Widget _buildSkillsWrap(BuildContext context) {
-    final skills = skillsList;
-    return Wrap(
-      spacing: 8,
-      runSpacing: 8,
-      children: skills
-          .map((s) => Chip(
-                label: Text(s, style: Theme.of(context).textTheme.bodySmall),
-                backgroundColor: Colors.transparent,
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.12)),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              ))
-          .toList(),
     );
   }
 

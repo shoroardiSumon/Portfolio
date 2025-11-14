@@ -100,7 +100,12 @@ class HomeSection extends StatelessWidget {
               onPressed: () => scrollController?.scrollToIndex(3, preferPosition: AutoScrollPosition.begin),
               child: const Text(viewProjectsLabel),
             ),
-            const SizedBox(width: 12),
+          ],
+        ),
+        const SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
             IconButton(
               onPressed: () => launchUrl(Uri.parse(socialLinks['linkedin'] ?? '')),
               icon: FaIcon(FontAwesomeIcons.linkedin, color: Theme.of(context).colorScheme.primary),
@@ -118,7 +123,7 @@ class HomeSection extends StatelessWidget {
             ),
           ],
         ),
-            const SizedBox(height: 12),
+        const SizedBox(height: 12),
       ],
     );
   }
