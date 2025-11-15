@@ -1,5 +1,6 @@
 // animated_text_kit was removed from home content; kept import commented for future use
 // import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,6 +8,7 @@ import 'package:portfolio/constants/assets.dart';
 import 'package:portfolio/constants/content.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:web/web.dart' as web;
 
 import '../scroll_controller_inherited.dart';
 
@@ -218,8 +220,28 @@ class HomeSection extends StatelessWidget {
     );
   }
 
-  void _downloadCV(BuildContext context) {
-    launchUrl(Uri(path: downloadCvPath));
-  }
+  // void _downloadCV(BuildContext context) {
+  //   launchUrl(Uri(path: downloadCvPath));
+  // }
 
+  void _downloadCV(BuildContext context) {
+    if (kIsWeb) {
+      // Web-only: Create and trigger anchor download
+      final anchor = web.HTMLAnchorElement()  // Correct class name!
+        ..href = downloadCvPath
+        ..download = 'CV-MdShoroardiSumon.pdf'  // Forces download with this filename
+        ..target = '_blank';  // Optional: Opens in new tab if download fails (browser-dependent)
+
+      // Append to body, click, and clean up (best practice for reliability)
+      web.document.body?.append(anchor);
+      anchor.click();
+      anchor.remove();
+    } else {
+      // Non-web fallback: Launch externally (e.g., for mobile/desktop)
+      launchUrl(
+        Uri(path: downloadCvPath),
+        mode: LaunchMode.externalApplication,
+      );
+    }
+  }
 }
