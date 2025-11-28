@@ -12,9 +12,9 @@ const List<String> homeParagraphs = [
 // Use a logical asset path relative to the `assets/` folder (do NOT include
 // the leading `assets/` prefix). For web we prefix with `assets/` at runtime
 // so the built URL becomes `assets/cv/...`.
-const String downloadCvPath = 'cv/MdShoroardiSumon.pdf';
+const String downloadCvPath = 'assets/cv/MdShoroardiSumon.pdf';
 const String downloadCvLabel = 'Download CV';
-const String viewProjectsLabel = 'Projects';
+const String viewProjectsLabel = 'View Projects';
 
 const String aboutTitle = 'About Me';
 const List<String> aboutParagraphs = [
