@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:portfolio/constants/content.dart';
 
 // Footer uses centralized content constants for texts and social links
@@ -20,18 +19,7 @@ class _FooterState extends State<Footer> {
   @override
   void initState() {
     super.initState();
-    _loadVersion();
-  }
-
-  Future<void> _loadVersion() async {
-    try {
-      final info = await PackageInfo.fromPlatform();
-      setState(() {
-        _version = '${info.version}+${info.buildNumber}';
-      });
-    } catch (_) {
-      // ignore and leave version empty
-    }
+    _version = "1.0.0+1";
   }
 
   @override
@@ -54,10 +42,8 @@ class _FooterState extends State<Footer> {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
-          if (_version.isNotEmpty) ...[
-            const SizedBox(height: 6),
-            Text('Version: $_version', style: Theme.of(context).textTheme.bodySmall),
-          ],
+          const SizedBox(height: 6),
+          Text('Version: $_version', style: Theme.of(context).textTheme.bodySmall),
           const SizedBox(height: 10),
           Semantics(
             label: 'Social Links',
