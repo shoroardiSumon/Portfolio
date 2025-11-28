@@ -11,7 +11,7 @@ const List<String> homeParagraphs = [
 
 // Use a relative path (no leading slash) so assets resolve correctly
 // when the app is hosted under a repository subpath (GitHub Pages).
-const String downloadCvPath = 'assets/images/CV-MdShoroardiSumon.pdf';
+const String downloadCvPath = 'assets/CV-MdShoroardiSumon.pdf';
 const String downloadCvLabel = 'Download CV';
 const String viewProjectsLabel = 'View Projects';
 

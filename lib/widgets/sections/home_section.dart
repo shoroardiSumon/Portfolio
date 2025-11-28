@@ -229,7 +229,7 @@ class HomeSection extends StatelessWidget {
       // Web-only: Create and trigger anchor download
       final anchor = web.HTMLAnchorElement()  // Correct class name!
         ..href = downloadCvPath
-        ..download = 'assets/images/CV-MdShoroardiSumon.pdf'  // Forces download with this filename
+        ..download = 'CV-MdShoroardiSumon.pdf'  // Forces download with this filename
         ..target = '_blank';  // Optional: Opens in new tab if download fails (browser-dependent)
 
       // Append to body, click, and clean up (best practice for reliability)
