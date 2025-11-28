@@ -11,7 +11,7 @@ const List<String> homeParagraphs = [
 
 const String downloadCvPath = '/assets/CV-MdShoroardiSumon.pdf';
 const String downloadCvLabel = 'Download CV';
-const String viewProjectsLabel = 'View Projects';
+const String viewProjectsLabel = 'Projects';
 
 const String aboutTitle = 'About Me';
 const List<String> aboutParagraphs = [
@@ -71,7 +71,7 @@ const List<Map<String, dynamic>> experiences = [
   {
     'company': 'Automation Services Ltd, Gulshan-1, Dhaka',
     'role': 'Software Engineer',
-    'duration': 'Nov 2022 – Present',
+    'duration': 'Nov 2022 - Present',
     'description': [
       'Built and maintained Flutter mobile apps with REST API integration.',
       'Developed and maintained Spring Boot REST APIs for backend services.',
