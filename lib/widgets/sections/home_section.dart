@@ -232,7 +232,7 @@ class HomeSection extends StatelessWidget {
       // anchor matches the deployed build path (`assets/assets/images/...`).
       final anchor = web.HTMLAnchorElement()
         ..href = 'assets/$downloadCvPath'
-        ..download = 'CV-MdShoroardiSumon.pdf' // Forces download with this filename
+        ..download = 'MdShoroardiSumon.pdf' // Forces download with this filename
         ..target = '_blank'; // Optional: Opens in new tab if download fails (browser-dependent)
 
       // Append to body, click, and clean up (best practice for reliability)

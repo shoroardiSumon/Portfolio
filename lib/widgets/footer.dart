@@ -19,7 +19,7 @@ class _FooterState extends State<Footer> {
   @override
   void initState() {
     super.initState();
-    _version = "1.0.0+1";
+    _version = "1.0.0+2";
   }
 
   @override
