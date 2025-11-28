@@ -81596,7 +81596,7 @@ s=A.F(a).ok.e
 r=t.p
 return A.dO(A.b([A.fc(A.cS(A.b([p,B.bH,A.bl(u.H,q,q,q,s==null?q:s.xi(A.F(a).ax.b,B.bV),q,q),B.b2,A.bl(B.b.br(B.nw," "),q,q,q,A.F(a).ok.y,q,q),B.O5,A.dO(A.b([A.atd(!1,B.yZ,q,q,q,q,q,q,new A.a1z(this,a),q,q),B.kB,A.aun(B.yY,new A.a1A(b)),B.yx,A.fD(q,q,A.nR(B.fX,A.F(a).ax.b,q),q,q,new A.a1B(),q,q,"LinkedIn Profile"),A.fD(q,q,A.nR(B.fY,A.F(a).ax.b,q),q,q,new A.a1C(),q,q,"GitHub Profile"),A.fD(q,q,B.jC,q,q,new A.a1D(),q,q,"Send Email")],r),B.V,B.C,B.D),B.hR],r),B.a3,B.cR,B.D),1,q),A.fc(A.f8(B.ij,A.l4(q,q,A.f8(q,q,B.x,q,new A.cs(q,A.ap4(B.lz,new A.nm("assets/images/profile.jpg")),q,q,A.b([new A.cR(0,B.bN,A.F(a).ax.b.aH(0.12),B.e,20)],t.sq),q,B.dd),220,q,q,220),q,q,B.GO,q,q,q,q,q,q),B.x,q,q,q,q,q,q),1,q)],r),B.V,B.C,B.D)},
 KQ(a){var s=v.G,r=s.document.createElement("a")
-r.href="/assets/images/CV-MdShoroardiSumon.pdf"
+r.href="assets/images/CV-MdShoroardiSumon.pdf"
 r.download="assets/images/CV-MdShoroardiSumon.pdf"
 r.target="_blank"
 s=s.document.body
@@ -87978,7 +87978,7 @@ B.Sk=new A.m(!0,B.l,null,".AppleSystemUIFont",null,null,null,null,null,null,null
 B.Po=new A.m(!0,B.l,null,".AppleSystemUIFont",null,null,null,null,null,null,null,null,null,null,null,null,null,B.f,null,null,null,"blackRedwoodCity labelSmall",null,null,null,null)
 B.Tb=new A.cX(B.R1,B.Q5,B.R2,B.RB,B.PK,B.PR,B.Qp,B.Ro,B.QD,B.S6,B.Pe,B.Pz,B.S2,B.Sk,B.Po)
 B.Tc=new A.ku("View on Store",null,null,null,null,null,null,null,null)
-B.yY=new A.ku("Projects",null,null,null,null,null,null,null,null)
+B.yY=new A.ku("View Projects",null,null,null,null,null,null,null,null)
 B.Td=new A.ku("Send Message",null,null,null,null,null,null,null,null)
 B.yZ=new A.ku("Download CV",null,null,null,null,null,null,null,null)
 B.Wz=new A.ad5(0,"system")

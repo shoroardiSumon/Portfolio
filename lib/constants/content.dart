@@ -9,9 +9,11 @@ const List<String> homeParagraphs = [
   'Flutter developer with 3 years of experience building high-performance mobile and web applications. I also work with Spring Boot to develop scalable REST APIs.'
 ];
 
-const String downloadCvPath = '/assets/images/CV-MdShoroardiSumon.pdf';
+// Use a relative path (no leading slash) so assets resolve correctly
+// when the app is hosted under a repository subpath (GitHub Pages).
+const String downloadCvPath = 'assets/images/CV-MdShoroardiSumon.pdf';
 const String downloadCvLabel = 'Download CV';
-const String viewProjectsLabel = 'Projects';
+const String viewProjectsLabel = 'View Projects';
 
 const String aboutTitle = 'About Me';
 const List<String> aboutParagraphs = [

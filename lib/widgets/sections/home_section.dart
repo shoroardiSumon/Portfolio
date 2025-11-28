@@ -238,8 +238,10 @@ class HomeSection extends StatelessWidget {
       anchor.remove();
     } else {
       // Non-web fallback: Launch externally (e.g., for mobile/desktop)
+      // Use `Uri.parse` to build a proper URI from the relative asset path.
+      // Note: On non-web platforms this will try to open the URI externally.
       launchUrl(
-        Uri(path: downloadCvPath),
+        Uri.parse(downloadCvPath),
         mode: LaunchMode.externalApplication,
       );
     }
