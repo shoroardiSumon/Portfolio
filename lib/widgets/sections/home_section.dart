@@ -227,10 +227,13 @@ class HomeSection extends StatelessWidget {
   void _downloadCV(BuildContext context) {
     if (kIsWeb) {
       // Web-only: Create and trigger anchor download
-      final anchor = web.HTMLAnchorElement()  // Correct class name!
-        ..href = downloadCvPath
-        ..download = 'CV-MdShoroardiSumon.pdf'  // Forces download with this filename
-        ..target = '_blank';  // Optional: Opens in new tab if download fails (browser-dependent)
+      // When Flutter builds web, assets are emitted under `build/web/assets/assets/...`.
+      // Prefix the logical asset path with `assets/` so the URL used by the
+      // anchor matches the deployed build path (`assets/assets/images/...`).
+      final anchor = web.HTMLAnchorElement()
+        ..href = 'assets/$downloadCvPath'
+        ..download = 'CV-MdShoroardiSumon.pdf' // Forces download with this filename
+        ..target = '_blank'; // Optional: Opens in new tab if download fails (browser-dependent)
 
       // Append to body, click, and clean up (best practice for reliability)
       web.document.body?.append(anchor);
